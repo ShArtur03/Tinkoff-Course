@@ -1,0 +1,16 @@
+app:
+  test: config
+  scheduler:
+    interval: 10000
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    path: /openapi/api-docs
+
+web:
+  url:
+    base:
+      github: https://api.github.com/repos/
+      stackoverflow: https://api.stackexchange.com/docs/questions/
