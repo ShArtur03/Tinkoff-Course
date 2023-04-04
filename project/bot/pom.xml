@@ -17,6 +17,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <springdoc.version>2.0.2</springdoc.version>
         <telegram.version>6.5.0</telegram.version>
+        <pengrad.version>6.6.0</pengrad.version>
     </properties>
 
     <dependencies>
@@ -55,16 +56,16 @@
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>${springdoc.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.github.pengrad</groupId>-->
-<!--            <artifactId>java-telegram-bot-api</artifactId>-->
-<!--            <version>6.6.0</version>-->
-<!--        </dependency>-->
         <dependency>
-            <groupId>org.telegram</groupId>
-            <artifactId>telegrambots</artifactId>
-            <version>${telegram.version}</version>
+            <groupId>com.github.pengrad</groupId>
+            <artifactId>java-telegram-bot-api</artifactId>
+            <version>${pengrad.version}</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.telegram</groupId>-->
+<!--            <artifactId>telegrambots</artifactId>-->
+<!--            <version>${telegram.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>link-parser</artifactId>

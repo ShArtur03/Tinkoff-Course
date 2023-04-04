@@ -6,3 +6,8 @@ springdoc:
     path: /swagger-ui
   api-docs:
     path: /openapi/api-docs
+spring:
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 8081

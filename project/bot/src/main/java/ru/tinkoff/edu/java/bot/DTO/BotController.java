@@ -2,13 +2,12 @@ package ru.tinkoff.edu.java.bot.DTO;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import ru.tinkoff.edu.java.bot.DTO.request.LinkUpdate;
-import ru.tinkoff.edu.java.bot.DTO.response.ApiErrorResponse;
 
 @SpringBootApplication
 @RestController
