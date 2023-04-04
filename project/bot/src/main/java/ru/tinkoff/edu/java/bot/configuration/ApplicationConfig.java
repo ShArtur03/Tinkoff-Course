@@ -1,9 +1,14 @@
 package ru.tinkoff.edu.java.bot.configuration;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-@ConfigurationProperties(prefix = "app", ignoreUnknownFields = false)
-public record ApplicationConfig(@NotNull String test) {}
+@Data
+@ConfigurationProperties(prefix = "bot", ignoreUnknownFields = false)
+public class ApplicationConfig {
+    @NotNull String name;
+    @NotNull String token;
+}
