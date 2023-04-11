@@ -61,11 +61,6 @@
             <artifactId>java-telegram-bot-api</artifactId>
             <version>${pengrad.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.telegram</groupId>-->
-<!--            <artifactId>telegrambots</artifactId>-->
-<!--            <version>${telegram.version}</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>link-parser</artifactId>

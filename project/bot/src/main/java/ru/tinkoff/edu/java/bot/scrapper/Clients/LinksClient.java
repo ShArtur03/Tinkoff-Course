@@ -20,7 +20,7 @@ public class LinksClient {
     }
 
     public LinksClient() {
-        this.webClient = WebClient.create("http://localhost:8080/tg-chat");
+        this.webClient = WebClient.create("http://localhost:8080/");
     }
 
     public LinkResponse addLink(Long chatId, AddLinkRequest linkRequest) {
