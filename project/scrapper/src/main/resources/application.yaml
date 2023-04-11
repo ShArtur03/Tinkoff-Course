@@ -14,3 +14,6 @@ web:
     base:
       github: https://api.github.com/repos/
       stackoverflow: https://api.stackexchange.com/docs/questions/
+
+server:
+  port: 5432

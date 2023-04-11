@@ -10,7 +10,6 @@ import ru.tinkoff.edu.java.bot.scrapper.DTO.LinkResponse;
 import ru.tinkoff.edu.java.bot.scrapper.DTO.ListLinksResponse;
 import ru.tinkoff.edu.java.bot.scrapper.DTO.RemoveLinkRequest;
 
-@Component
 public class LinksClient {
 
     private final WebClient webClient;
