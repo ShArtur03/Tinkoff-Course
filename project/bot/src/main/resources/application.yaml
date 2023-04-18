@@ -1,7 +1,6 @@
 bot:
   name: tinkBot
-#  token: ${TOKEN}
-  token: 5635271809:AAGEH_jME1TMjr3EmsuHaZ_86PeLnjAtzS0
+  token: ${TOKEN}
 springdoc:
   swagger-ui:
     path: /swagger-ui

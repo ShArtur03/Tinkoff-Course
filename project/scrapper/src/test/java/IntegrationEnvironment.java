@@ -23,8 +23,9 @@ public abstract class IntegrationEnvironment {
     static {
         DB_CONTAINER = new PostgreSQLContainer<>("postgres:15")
                 .withDatabaseName("scrapper")
-                .withUsername("tinkoff")
-                .withPassword("he_is_the_only_one");
+                .withUsername("admin")
+                .withPassword("admin")
+                .withExposedPorts(5432);
         DB_CONTAINER.start();
         runMigrations();
     }
