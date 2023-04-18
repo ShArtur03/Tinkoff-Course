@@ -1,3 +1,5 @@
+package ru.tinkoff.edu.java.scrapper;
+
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 

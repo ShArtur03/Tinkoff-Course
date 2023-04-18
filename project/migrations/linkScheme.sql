@@ -1,4 +1,0 @@
-CREATE TABLE IF NOT EXISTS link(
-    id SERIAL PRIMARY KEY,
-    link TEXT NOT NULL
-);

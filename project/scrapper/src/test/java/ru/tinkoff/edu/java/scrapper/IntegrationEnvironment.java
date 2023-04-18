@@ -1,3 +1,5 @@
+package ru.tinkoff.edu.java.scrapper;
+
 import liquibase.Contexts;
 import liquibase.LabelExpression;
 import liquibase.Liquibase;
@@ -31,10 +33,10 @@ public abstract class IntegrationEnvironment {
     }
 
     @DynamicPropertySource
-    static void jdbsProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasourse.url", DB_CONTAINER::getJdbcUrl);
-        registry.add("spring.datasourse.username", DB_CONTAINER::getUsername);
-        registry.add("spring.datasourse.password", DB_CONTAINER::getPassword);
+    static void jdbcProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", DB_CONTAINER::getJdbcUrl);
+        registry.add("spring.datasource.username", DB_CONTAINER::getUsername);
+        registry.add("spring.datasource.password", DB_CONTAINER::getPassword);
     }
 
     @SneakyThrows

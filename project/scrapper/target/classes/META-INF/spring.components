@@ -4,4 +4,7 @@ ru.tinkoff.edu.java.scrapper.configuration.ClientConfig=org.springframework.ster
 ru.tinkoff.edu.java.scrapper.controllers.LinkController=org.springframework.stereotype.Component
 ru.tinkoff.edu.java.scrapper.controllers.TGChatController=org.springframework.stereotype.Component
 ru.tinkoff.edu.java.scrapper.exception.GlobalExceptionHandler=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.repository.jdbc.JdbcChatRepository=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.repository.jdbc.JdbcLinkRepository=org.springframework.stereotype.Component
+ru.tinkoff.edu.java.scrapper.repository.jdbc.JdbcSubscriptionRepository=org.springframework.stereotype.Component
 ru.tinkoff.edu.java.scrapper.scheduler.LinkUpdaterScheduler=org.springframework.stereotype.Component

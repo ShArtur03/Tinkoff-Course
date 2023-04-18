@@ -5,6 +5,8 @@ import ru.tinkoff.edu.java.LinkParser.data.StackOverFlowLinkData;
 import ru.tinkoff.edu.java.scrapper.clients.DTO.StackOverFlowApiItemsResponse;
 import ru.tinkoff.edu.java.scrapper.clients.DTO.StackOverFlowApiResponse;
 
+import java.util.Objects;
+
 public class HttpStackOverFlowClient implements StackOverFlowClient{
 
     private static final String stackUrl = "https://api.stackexchange.com/2.3/questions/";
@@ -24,11 +26,11 @@ public class HttpStackOverFlowClient implements StackOverFlowClient{
 
     @Override
     public StackOverFlowApiItemsResponse getQuestion(StackOverFlowLinkData question) {
-        return webClient
+        return Objects.requireNonNull(webClient
                 .get()
                 .uri(baseUrl + question.questionId() + "{id}?site=stackoverflow")
                 .retrieve()
                 .bodyToMono(StackOverFlowApiResponse.class)
-                .block().items().get(0);
+                .block()).items().get(0);
     }
 }
