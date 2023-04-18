@@ -1,6 +1,6 @@
 package ru.tinkoff.edu.java.LinkParser.parsers;
 
-import ru.tinkoff.edu.java.linkParser.data.LinkData;
+import ru.tinkoff.edu.java.LinkParser.data.LinkData;
 
 public sealed abstract class Parser implements LinkParser permits StackOverFlowLinkParser, GitHubLinkParser{
 

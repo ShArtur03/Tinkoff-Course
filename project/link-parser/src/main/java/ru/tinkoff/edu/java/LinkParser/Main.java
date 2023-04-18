@@ -1,7 +1,8 @@
 package ru.tinkoff.edu.java.LinkParser;
 
-import ru.tinkoff.edu.java.linkParser.parsers.LinkParser;
-import ru.tinkoff.edu.java.linkParser.parsers.ParserChain;
+
+import ru.tinkoff.edu.java.LinkParser.parsers.LinkParser;
+import ru.tinkoff.edu.java.LinkParser.parsers.ParserChain;
 
 import java.util.Scanner;
 

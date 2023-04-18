@@ -1,7 +1,7 @@
 package ru.tinkoff.edu.java.LinkParser.parsers;
 
-import ru.tinkoff.edu.java.linkParser.data.GitHubLinkData;
-import ru.tinkoff.edu.java.linkParser.data.LinkData;
+import ru.tinkoff.edu.java.LinkParser.data.GitHubLinkData;
+import ru.tinkoff.edu.java.LinkParser.data.LinkData;
 
 public final class GitHubLinkParser extends Parser{
 

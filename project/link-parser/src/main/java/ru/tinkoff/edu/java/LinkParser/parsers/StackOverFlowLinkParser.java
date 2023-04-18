@@ -1,7 +1,7 @@
 package ru.tinkoff.edu.java.LinkParser.parsers;
 
-import ru.tinkoff.edu.java.linkParser.data.LinkData;
-import ru.tinkoff.edu.java.linkParser.data.StackOverFlowLinkData;
+import ru.tinkoff.edu.java.LinkParser.data.LinkData;
+import ru.tinkoff.edu.java.LinkParser.data.StackOverFlowLinkData;
 
 public final class StackOverFlowLinkParser extends Parser {
 
