@@ -12,20 +12,19 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class JdbcChatRepository {
-
     private final JdbcTemplate template;
     private final BeanPropertyRowMapper<ChatEntity> mapper = new BeanPropertyRowMapper<>(ChatEntity.class);
 
-    //Sql requests
     private final static String ADD_QUERY = "insert into chat (id) values (?)";
     private final static String REMOVE_BY_ID_QUERY = "delete from chat where id = ?";
     private final static String FIND_ALL_QUERY = "select id from chat";
     private final static String FIND_ALL_SUBSCRIBERS_QUERY = """
-            select id
+            select id 
             from chat
-            join subscription on chat.id = chatId
-            where linkId = ?
+            join subscription on chat.id = chat_id
+            where link_id = ?
             """;
+
 
     public Integer add(Long id) throws DuplicateKeyException {
         return template.update(ADD_QUERY, id);

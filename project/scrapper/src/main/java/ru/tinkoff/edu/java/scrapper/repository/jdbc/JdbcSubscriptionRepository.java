@@ -15,10 +15,10 @@ public class JdbcSubscriptionRepository {
     private final JdbcTemplate template;
     private final BeanPropertyRowMapper<SubscriptionEntity> mapper = new BeanPropertyRowMapper<>(SubscriptionEntity.class);
 
-    private final static String ADD_QUERY = "insert into subscription (chatId, linkId) values (?, ?)";
-    private final static String FIND_ALL_QUERY = "select chatId, linkId from subscription";
-    private final static String REMOVE_QUERY = "delete from subscription where chatId = ? and linkId = ?";
-    private final static String COUNT_SUBSCRIPTIONS_QUERY = "select count(chatId) from subscription where linkId = ?";
+    private final static String ADD_QUERY = "insert into subscription (chat_id, link_id) values (?, ?)";
+    private final static String FIND_ALL_QUERY = "select chat_id, link_id from subscription";
+    private final static String REMOVE_QUERY = "delete from subscription where chat_id = ? and link_id = ?";
+    private final static String COUNT_SUBSCRIPTIONS_QUERY = "select count(chat_id) from subscription where link_id = ?";
 
     public Integer add(Long chatId, Long linkId) throws DuplicateKeyException {
         return template.update(ADD_QUERY, chatId, linkId);
@@ -36,3 +36,4 @@ public class JdbcSubscriptionRepository {
         return template.queryForObject(COUNT_SUBSCRIPTIONS_QUERY, Integer.class, linkId);
     }
 }
+

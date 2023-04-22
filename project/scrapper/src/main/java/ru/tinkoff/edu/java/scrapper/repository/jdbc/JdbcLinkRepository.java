@@ -20,57 +20,56 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class JdbcLinkRepository {
-
     private final JdbcTemplate template;
     private final BeanPropertyRowMapper<LinkEntity> mapper = new BeanPropertyRowMapper<>(LinkEntity.class);
 
-    private final static String ADD_QUERY = "insert into url (link) values (?)";
+    private final static String ADD_QUERY = "insert into link (url) values (?)";
     private final static String FIND_QUERY = """
-            select id, link, lastCheckTime, lastUpdateTime
-            from link
-            where link = ?
+            select id, url, last_check_time, last_update_time 
+            from link 
+            where url = ?
             """;
     private final static String FIND_BY_ID_QUERY = """
-            select id, link, lastCheckTime, lastUpdateTime
-            from link
+            select id, url, last_check_time, last_update_time 
+            from link 
             where id = ?
             """;
-    private final static String FIND_ALL_QUERY = "select id, link, lastCheckTime, lastUpdateTime from link";
+    private final static String FIND_ALL_QUERY = "select id, url, last_check_time, last_update_time from link";
     private final static String FIND_WITH_SUBSCRIBER_QUERY = """
-            select id, link, lastCheckTime, lastUpdateTime
-            from link
-            join subscription s on link.id = s.linkId
-            where chatId = ?
+            select id, url, last_check_time, last_update_time
+            from link 
+            join subscription s on link.id = s.link_id
+            where chat_id = ?
             """;
     private final static String UPDATE_LAST_CHECKED_TIME_AND_GET = """
             update link
-            set lastCheckTime = now()
-            where ? > lastCheckTime
-            returning id, link, lastCheckTime, lastUpdateTime;
+            set last_check_time = now()
+            where ? > last_check_time
+            returning id, url, last_check_time, last_update_time;
             """;
-    private final static String UPDATE_LAST_UPDATE_TIME_QUERY = "update link set lastUpdateTime = ? where id = ?";
-    private final static String REMOVE_QUERY = "delete from link where link = ?";
+    private final static String UPDATE_LAST_UPDATE_TIME_QUERY = "update link set last_update_time = ? where id = ?";
+    private final static String REMOVE_QUERY = "delete from link where url = ?";
     private final static String REMOVE_BY_ID_QUERY = "delete from link where id = ?";
     private final static String REMOVE_WITH_ZERO_SUBSCRIBERS_QUERY = """
-            delete from link
+            delete from link 
             where link.id in 
             (select id from link 
-            left outer join subscription s on link.id = s.linkId 
-            where s.chatId is NULL)
+            left outer join subscription s on link.id = s.link_id 
+            where s.chat_id is NULL)
             """;
 
-    public Long add(String link) throws DuplicateKeyException {
+    public Long add(String url) throws DuplicateKeyException {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         template.update(con -> {
             PreparedStatement ps = con.prepareStatement(ADD_QUERY, new String[]{"id"});
-            ps.setString(1, link);
+            ps.setString(1, url);
             return ps;
         }, keyHolder);
         return keyHolder.getKey().longValue();
     }
 
-    public LinkEntity find(String link) throws EmptyResultDataAccessException {
-        return template.queryForObject(FIND_QUERY, mapper, link);
+    public LinkEntity find(String url) throws EmptyResultDataAccessException {
+        return template.queryForObject(FIND_QUERY, mapper, url);
     }
 
     public LinkEntity findById(Long id) throws EmptyResultDataAccessException {
@@ -94,8 +93,8 @@ public class JdbcLinkRepository {
         return template.update(UPDATE_LAST_UPDATE_TIME_QUERY, newUpdateTime, id);
     }
 
-    public Integer remove(String link) {
-        return template.update(REMOVE_QUERY, link);
+    public Integer remove(String url) {
+        return template.update(REMOVE_QUERY, url);
     }
 
     public Integer removeById(Long id) {
