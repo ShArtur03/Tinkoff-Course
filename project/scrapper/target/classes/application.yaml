@@ -11,9 +11,11 @@ springdoc:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/customerdb?useSSL=false
+    url: jdbc:postgresql://localhost:5432/scrapper
     password: admin
     username: admin
+  liquibase:
+    enabled: false
 
 
 web:

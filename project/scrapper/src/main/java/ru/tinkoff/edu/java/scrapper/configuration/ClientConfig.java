@@ -9,10 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
-import ru.tinkoff.edu.java.scrapper.clients.GitHubClient;
-import ru.tinkoff.edu.java.scrapper.clients.HttpGitHubClient;
-import ru.tinkoff.edu.java.scrapper.clients.HttpStackOverFlowClient;
-import ru.tinkoff.edu.java.scrapper.clients.StackOverFlowClient;
+import ru.tinkoff.edu.java.scrapper.clients.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,13 +27,18 @@ public class ClientConfig {
         return WebClient.builder().clientConnector(new ReactorClientHttpConnector(httpClient)).build();
     }
 
-    @Bean
+    @Bean("gitHubClient")
     public GitHubClient gitHubClient(@Value("${web.url.base.github}") String baseUrl, WebClient webClient) {
         return new HttpGitHubClient(webClient, baseUrl);
     }
 
-    @Bean
+    @Bean("stackOverFlowClient")
     public StackOverFlowClient stackOverFlowClient(@Value("${web.url.base.stackoverflow}") String baseUrl, WebClient webClient) {
         return new HttpStackOverFlowClient(webClient, baseUrl);
+    }
+
+    @Bean("botClient")
+    public BotClient botClient(WebClient webClient) {
+        return new BotClient(webClient);
     }
 }

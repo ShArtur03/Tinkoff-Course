@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import ru.tinkoff.edu.java.scrapper.DTO.ApiErrorResponse;
+import ru.tinkoff.edu.java.scrapper.DTO.responses.ApiErrorResponse;
 
 import java.util.Arrays;
 import java.util.Objects;

@@ -4,10 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.tinkoff.edu.java.scrapper.DTO.AddLinkRequest;
-import ru.tinkoff.edu.java.scrapper.DTO.LinkResponse;
-import ru.tinkoff.edu.java.scrapper.DTO.ListLinkResponse;
-import ru.tinkoff.edu.java.scrapper.DTO.RemoveLinkRequest;
+import ru.tinkoff.edu.java.scrapper.DTO.requests.AddLinkRequest;
+import ru.tinkoff.edu.java.scrapper.DTO.responses.LinkResponse;
+import ru.tinkoff.edu.java.scrapper.DTO.responses.ListLinkResponse;
+import ru.tinkoff.edu.java.scrapper.DTO.requests.RemoveLinkRequest;
 import ru.tinkoff.edu.java.scrapper.DTO.entities.LinkEntity;
 import ru.tinkoff.edu.java.scrapper.service.SubscriptionService;
 
