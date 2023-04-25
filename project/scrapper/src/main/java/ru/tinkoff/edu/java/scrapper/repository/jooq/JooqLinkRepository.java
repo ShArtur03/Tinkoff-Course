@@ -64,7 +64,7 @@ public class JooqLinkRepository {
                 .fetchInto(LinkEntity.class);
     }
 
-    public List<LinkEntity> findWithLastCheckedTimeLongAgo(OffsetDateTime shouldBeCheckedAfter) {
+    public List<Link> findWithLastCheckedTimeLongAgo(OffsetDateTime shouldBeCheckedAfter) {
         return context.update(link)
                 .set(link.LASTCHECKTIME, currentOffsetDateTime())
                 .where(link.LASTCHECKTIME.lessThan(shouldBeCheckedAfter))
