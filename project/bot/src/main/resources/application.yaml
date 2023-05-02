@@ -1,13 +1,25 @@
 bot:
   name: tinkBot
   token: ${TOKEN}
+  rabbit-queue:
+    exchange-name: updates
+    queue-name: updates.queue
+    routing-key: upd
+
 springdoc:
   swagger-ui:
     path: /swagger-ui
   api-docs:
     path: /openapi/api-docs
+
 spring:
   main:
     allow-bean-definition-overriding: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: ${QUEUE_USERNAME}
+    password: ${QUEUE_PASSWORD}
+
 server:
   port: 8080

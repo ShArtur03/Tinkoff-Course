@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ru.tinkoff.edu.java.scrapper.DTO.model.Link;
 import ru.tinkoff.edu.java.scrapper.DTO.requests.AddLinkRequest;
 import ru.tinkoff.edu.java.scrapper.DTO.responses.LinkResponse;
 import ru.tinkoff.edu.java.scrapper.DTO.responses.ListLinkResponse;
@@ -24,8 +25,8 @@ public class LinkController {
 
     @PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public LinkResponse createLink(@PathVariable("id") Long id, @RequestBody AddLinkRequest request) {
-        LinkEntity linkEntity = subscriptionService.subscribe(id, URI.create(String.valueOf(request.url())));
-        return new LinkResponse(linkEntity.getId(), URI.create(linkEntity.getUrl()));
+        Link link = subscriptionService.subscribe(id, URI.create(String.valueOf(request.url())));
+        return new LinkResponse(link.getId(), URI.create(link.getUrl()));
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -39,7 +40,7 @@ public class LinkController {
 
     @DeleteMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public LinkResponse delete(@PathVariable("id") Long id, @RequestBody RemoveLinkRequest request) {
-        LinkEntity linkEntity = subscriptionService.unsubscribe(id, URI.create(request.url()));
-        return new LinkResponse(linkEntity.getId(), URI.create(linkEntity.getUrl()));
+        Link link = subscriptionService.subscribe(id, URI.create(String.valueOf(request.url())));
+        return new LinkResponse(link.getId(), URI.create(link.getUrl()));
     }
 }
