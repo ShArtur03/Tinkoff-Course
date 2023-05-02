@@ -4,64 +4,64 @@ import jakarta.annotation.Nullable;
 import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
-import ru.tinkoff.edu.java.scrapper.domain.jooq.tables.Link;
 import ru.tinkoff.edu.java.scrapper.domain.jooq.tables.Subscription;
-import ru.tinkoff.edu.java.scrapper.DTO.entities.LinkEntity;
+import ru.tinkoff.edu.java.scrapper.DTO.model.Link;
 
-import java.util.List;
 import java.time.OffsetDateTime;
+import java.util.List;
 
 import static org.jooq.impl.DSL.currentOffsetDateTime;
 import static org.jooq.impl.DSL.select;
+
 
 @Repository
 @RequiredArgsConstructor
 public class JooqLinkRepository {
     private final DSLContext context;
-    private final Link link = Link.LINK;
+    private final ru.tinkoff.edu.java.scrapper.domain.jooq.tables.Link link = ru.tinkoff.edu.java.scrapper.domain.jooq.tables.Link.LINK;
     private final Subscription subscription = Subscription.SUBSCRIPTION;
 
-    public LinkEntity subscribe(String url, Long chatId) {
-        LinkEntity linkEntity = find(url);
-        if (linkEntity == null) {
-            linkEntity = context.insertInto(link)
-                    .set(link.LINK_, url)
-                    .returning(link.fields())
-                    .fetchOneInto(LinkEntity.class);
+    public Link subscribe(String url, Long chatId) {
+        Link link = find(url);
+        if (link == null) {
+            link = context.insertInto(this.link)
+                    .set(this.link.LINK_, url)
+                    .returning(this.link.fields())
+                    .fetchOneInto(Link.class);
         }
         context.insertInto(subscription)
-                .set(subscription.LINKID, linkEntity.getId())
+                .set(subscription.LINKID, link.getId())
                 .set(subscription.CHATID, chatId)
                 .execute();
-        return linkEntity;
+        return link;
     }
 
-    public @Nullable LinkEntity find(String url) {
+    public @Nullable Link find(String url) {
         return context.select(link.fields())
                 .from(link)
                 .where(link.LINK_.eq(url))
-                .fetchOneInto(LinkEntity.class);
+                .fetchOneInto(Link.class);
     }
 
-    public @Nullable LinkEntity findById(Long id) {
+    public @Nullable Link findById(Long id) {
         return context.select(link.fields())
                 .from(link)
                 .where(link.ID.eq(id))
-                .fetchOneInto(LinkEntity.class);
+                .fetchOneInto(Link.class);
     }
 
-    public List<LinkEntity> findAll() {
+    public List<Link> findAll() {
         return context.select(link.fields())
                 .from(link)
-                .fetchInto(LinkEntity.class);
+                .fetchInto(Link.class);
     }
 
-    public List<LinkEntity> findWithChatSubscription(Long chatId) {
+    public List<Link> findWithChatSubscription(Long chatId) {
         return context.select(link.fields())
                 .from(link)
                 .join(subscription).on(link.ID.eq(subscription.LINKID))
                 .where(subscription.CHATID.eq(chatId))
-                .fetchInto(LinkEntity.class);
+                .fetchInto(Link.class);
     }
 
     public List<Link> findWithLastCheckedTimeLongAgo(OffsetDateTime shouldBeCheckedAfter) {
@@ -69,7 +69,7 @@ public class JooqLinkRepository {
                 .set(link.LASTCHECKTIME, currentOffsetDateTime())
                 .where(link.LASTCHECKTIME.lessThan(shouldBeCheckedAfter))
                 .returning(link.fields())
-                .fetchInto(LinkEntity.class);
+                .fetchInto(Link.class);
     }
 
     public void updateLastUpdateTime(Long id, OffsetDateTime newUpdateTime) {

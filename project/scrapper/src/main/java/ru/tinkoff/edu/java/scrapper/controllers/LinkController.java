@@ -9,7 +9,7 @@ import ru.tinkoff.edu.java.scrapper.DTO.responses.LinkResponse;
 import ru.tinkoff.edu.java.scrapper.DTO.responses.ListLinkResponse;
 import ru.tinkoff.edu.java.scrapper.DTO.requests.RemoveLinkRequest;
 import ru.tinkoff.edu.java.scrapper.DTO.entities.LinkEntity;
-import ru.tinkoff.edu.java.scrapper.service.SubscriptionService;
+import ru.tinkoff.edu.java.scrapper.service.domain.SubscriptionService;
 
 import java.net.URI;
 import java.util.List;
@@ -24,7 +24,7 @@ public class LinkController {
 
     @PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public LinkResponse createLink(@PathVariable("id") Long id, @RequestBody AddLinkRequest request) {
-        LinkEntity linkEntity = subscriptionService.subscribe(id, URI.create(request.url()));
+        LinkEntity linkEntity = subscriptionService.subscribe(id, URI.create(String.valueOf(request.url())));
         return new LinkResponse(linkEntity.getId(), URI.create(linkEntity.getUrl()));
     }
 

@@ -5,11 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
-import ru.tinkoff.edu.java.scrapper.DTO.entities.LinkEntity;
 import ru.tinkoff.edu.java.scrapper.IntegrationEnvironment;
 import ru.tinkoff.edu.java.scrapper.DTO.model.Link;
 import ru.tinkoff.edu.java.scrapper.exception.InternalError;
-import ru.tinkoff.edu.java.scrapper.service.LinkService;
+import ru.tinkoff.edu.java.scrapper.service.domain.LinkService;
 
 import java.time.Duration;
 import java.time.OffsetDateTime;
@@ -33,17 +32,17 @@ class JpaLinkServiceTest extends IntegrationEnvironment {
         OffsetDateTime lastUpdateTime = OffsetDateTime.now();
 
         Long id1 = 1L;
-        String url1 = "https://github.com/Wieceslaw/tinkoff-project-1/";
+        String url1 = "https://github.com/ShArtur03/Tinkoff-Course-1";
         OffsetDateTime lastCheckTime1 = OffsetDateTime.now().minusMinutes(5);
         helper.addLink(id1, url1, lastCheckTime1, lastUpdateTime);
 
         Long id2 = 2L;
-        String url2 = "https://github.com/Wieceslaw/tinkoff-project-2/";
+        String url2 = "https://github.com/ShArtur03/Tinkoff-Course-2";
         OffsetDateTime lastCheckTime2 = OffsetDateTime.now().minusMinutes(5);
         helper.addLink(id2, url2, lastCheckTime2, lastUpdateTime);
 
         Long id3 = 3L;
-        String url3 = "https://github.com/Wieceslaw/tinkoff-project-3/";
+        String url3 = "https://github.com/ShArtur03/Tinkoff-Course-3";
         OffsetDateTime lastCheckTime3 = OffsetDateTime.now();
         helper.addLink(id3, url3, lastCheckTime3, lastUpdateTime);
 
@@ -65,14 +64,14 @@ class JpaLinkServiceTest extends IntegrationEnvironment {
     void updateLink__linkExists_updatesLink() {
         // given
         Long id = 1L;
-        String url = "https://github.com/Wieceslaw/tinkoff-project/";
+        String url = "https://github.com/ShArtur03/Tinkoff-Course";
         helper.addLink(id, url);
         OffsetDateTime newUpdateTime = OffsetDateTime.now().plusHours(5);
 
         // when
 
         // then
-         linkService.updateLink((id), newUpdateTime);
+         linkService.updateLinkLastUpdateTime((id), newUpdateTime);
          Link updatedLink = helper.getLinkById(id);
          assertEquals(newUpdateTime.toEpochSecond(), updatedLink.getLastUpdateTime().toEpochSecond());
     }

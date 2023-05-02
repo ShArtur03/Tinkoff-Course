@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tinkoff.edu.java.scrapper.DTO.entities.ChatEntity;
+import ru.tinkoff.edu.java.scrapper.DTO.model.Chat;
 import ru.tinkoff.edu.java.scrapper.repository.jdbc.JdbcChatRepository;
 import ru.tinkoff.edu.java.scrapper.IntegrationEnvironment;
 
@@ -95,7 +96,7 @@ class JdbcChatRepositoryTest extends IntegrationEnvironment {
         // given
 
         // when
-        List<ChatEntity> all = chatRepository.findAll();
+        List<Chat> all = chatRepository.findAll();
 
         // then
         assertEquals(all.size(), 0);
@@ -110,7 +111,7 @@ class JdbcChatRepositoryTest extends IntegrationEnvironment {
         create(id);
 
         // when
-        List<ChatEntity> all = chatRepository.findAll();
+        List<Chat> all = chatRepository.findAll();
 
         // then
         assertEquals(all.size(), 1);
