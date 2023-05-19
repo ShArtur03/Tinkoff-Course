@@ -4,8 +4,8 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.tinkoff.edu.java.bot.DTO.request.LinkUpdate;
-import ru.tinkoff.edu.java.bot.telegram.service.LinkService;
+import ru.tinkoff.edu.java.bot.DTO.controller.LinkUpdateRequest;
+import ru.tinkoff.edu.java.bot.service.LinkService;
 
 @RestController
 public class BotController {
@@ -17,7 +17,7 @@ public class BotController {
     }
 
     @PostMapping(value = "/updates")
-    public void createMessage(@Valid @RequestBody LinkUpdate request) {
+    public void createMessage(@Valid @RequestBody LinkUpdateRequest request) {
         linkService.updateLink(request);
     }
 }

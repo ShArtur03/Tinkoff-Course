@@ -1,4 +1,4 @@
-package ru.tinkoff.edu.java.bot.DTO.response;
+package ru.tinkoff.edu.java.bot.DTO.controller;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;

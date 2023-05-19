@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import ru.tinkoff.edu.java.bot.DTO.response.ApiErrorResponse;
+import ru.tinkoff.edu.java.bot.DTO.controller.ApiErrorResponse;
 import ru.tinkoff.edu.java.bot.scrapper.exception.ChatNotFoundException;
 import ru.tinkoff.edu.java.bot.scrapper.exception.LinkNotFoundException;
 
