@@ -54,11 +54,7 @@ public class UntrackCommand extends AbstractCommand{
             return new SendMessage(message.getChatId().toString(), wrongLinkFormatResponse);
         }
 
-        try {
-            webService.deleteLink(message.getChatId(), url);
-        } catch (LinkIsNotTrackingException ignored) {
-            return new SendMessage(message.getChatId().toString(), linkIsNotTrackingResponse);
-        }
+        webService.deleteLink(message.getChatId(), url);
 
         log.info("Removed link {}", url);
         return new SendMessage(message.getChatId().toString(), linkRemovedResponse);

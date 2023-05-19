@@ -1,21 +1,56 @@
 {
   "groups": [
     {
-      "name": "bot",
+      "name": "app",
       "type": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig",
+      "sourceType": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig"
+    },
+    {
+      "name": "app.bot",
+      "type": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig$Bot",
+      "sourceType": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig"
+    },
+    {
+      "name": "app.rabbit-queue",
+      "type": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig$RabbitQueue",
+      "sourceType": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig"
+    },
+    {
+      "name": "app.scrapper",
+      "type": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig$Scrapper",
       "sourceType": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig"
     }
   ],
   "properties": [
     {
-      "name": "bot.name",
+      "name": "app.bot.name",
       "type": "java.lang.String",
-      "sourceType": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig"
+      "sourceType": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig$Bot"
     },
     {
-      "name": "bot.token",
+      "name": "app.bot.token",
       "type": "java.lang.String",
-      "sourceType": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig"
+      "sourceType": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig$Bot"
+    },
+    {
+      "name": "app.rabbit-queue.exchange-name",
+      "type": "java.lang.String",
+      "sourceType": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig$RabbitQueue"
+    },
+    {
+      "name": "app.rabbit-queue.queue-name",
+      "type": "java.lang.String",
+      "sourceType": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig$RabbitQueue"
+    },
+    {
+      "name": "app.rabbit-queue.routing-key",
+      "type": "java.lang.String",
+      "sourceType": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig$RabbitQueue"
+    },
+    {
+      "name": "app.scrapper.url",
+      "type": "java.lang.String",
+      "sourceType": "ru.tinkoff.edu.java.bot.configuration.ApplicationConfig$Scrapper"
     }
   ],
   "hints": []

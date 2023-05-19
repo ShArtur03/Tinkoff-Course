@@ -52,11 +52,7 @@ public class TrackCommand extends AbstractCommand{
             return new SendMessage(message.getChatId().toString(), wrongLinkFormatResponse);
         }
 
-        try {
-            webService.createLink(message.getChatId(), url);
-        } catch (LinkIsAlreadyTackingException ignored) {
-            return new SendMessage(message.getChatId().toString(), linkIsAlreadyTrackingResponse);
-        }
+        webService.createLink(message.getChatId(), url);
 
         log.info("Created link {}", url);
         return new SendMessage(message.getChatId().toString(), linkAddedResponse);

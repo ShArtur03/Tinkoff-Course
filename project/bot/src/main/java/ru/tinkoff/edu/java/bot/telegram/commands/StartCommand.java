@@ -16,14 +16,11 @@ public class StartCommand implements Command{
     private final ScrapperWebService webService;
     private static final String COMMAND = "/start";
     private static final String welcomeMessage = "Hello!";
+    private static final String alreadyStarted = "You have already started work";
 
     @Override
     public SendMessage handle(@NotNull Message message) {
-        try {
-            webService.createChat(message.getChatId());
-        }catch (ChatAlreadyRegisteredException ex) {
-            return new SendMessage(message.getChatId().toString(), "You have already started work");
-        }
+        webService.createChat(message.getChatId());
         return new SendMessage(message.getChatId().toString(), welcomeMessage);
     }
 
