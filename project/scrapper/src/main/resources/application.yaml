@@ -1,8 +1,19 @@
 app:
-  test: config
+  github:
+    url: https://api.github.com
+  stackoverflow:
+    url: https://api.stackexchange.com/2.3
+  bot:
+    url: http://localhost:8081
   scheduler:
     interval: 10000
+    link-to-be-checked-interval: 600000
   databaseAccessType: jpa
+  use-queue: true
+  rabbit-queue:
+    exchange-name: updates
+    queue-name: updates.queue
+    routing-key: upd
 
 springdoc:
   swagger-ui:
@@ -13,18 +24,9 @@ springdoc:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/scrapper
-    password: admin
-    username: admin
-  liquibase:
-    enabled: false
-
-
-web:
-  url:
-    base:
-      github: https://api.github.com/repos/
-      stackoverflow: https://api.stackexchange.com/docs/questions/
+    password: postgres
+    username: password
 
 server:
-  port: 5432
+  port: 8080
 
