@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-public record StackOverflowApiItemResponse(
+public record StackOverflowApiResponse(
         String title,
         @JsonProperty("answer_count")
         Integer answersCount,

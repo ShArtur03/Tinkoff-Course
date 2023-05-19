@@ -5,9 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import ru.tinkoff.edu.java.scrapper.DTO.clients.StackOverflowApiItemResponse;
 import ru.tinkoff.edu.java.scrapper.DTO.clients.StackOverflowApiItemsResponse;
+import ru.tinkoff.edu.java.scrapper.DTO.clients.StackOverflowApiResponse;
 import ru.tinkoff.edu.java.scrapper.DTO.clients.UpdatesInfo;
 import ru.tinkoff.edu.java.scrapper.clients.StackOverflowWebClient;
 
@@ -20,7 +19,7 @@ public class StackOverflowWebService {
     public @Nullable UpdatesInfo fetchQuestionUpdates(Integer id) {
         StackOverflowApiItemsResponse response = stackOverflowWebClient.fetchQuestion(id).block();
         if (!response.items().isEmpty()) {
-            StackOverflowApiItemResponse questionResponse = response.items().get(0);
+            StackOverflowApiResponse questionResponse = response.items().get(0);
             return new UpdatesInfo(
                     questionResponse.lastActivityDate(),
                     List.of("Check out new update from " + questionResponse.title())
@@ -29,12 +28,13 @@ public class StackOverflowWebService {
         return null;
     }
 
-    public List<StackOverflowApiItemResponse> fetchQuestions(List<Integer> ids) {
+    public List<StackOverflowApiResponse> fetchQuestions(List<Integer> ids) {
         return stackOverflowWebClient
                 .fetchQuestions(ids
                         .stream()
                         .map(Object::toString)
                         .collect(Collectors.joining(";")))
-                .map(StackOverflowApiItemsResponse::items).block();
+                .map(StackOverflowApiItemsResponse::items)
+                .block();
     }
 }
