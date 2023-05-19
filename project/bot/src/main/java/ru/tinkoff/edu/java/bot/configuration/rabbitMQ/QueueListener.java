@@ -6,7 +6,7 @@ import org.springframework.validation.annotation.Validated;
 
 @Validated
 @Data
-public class RabbitQueue {
+public class QueueListener {
     @NotBlank
     private String queueName;
     @NotBlank
