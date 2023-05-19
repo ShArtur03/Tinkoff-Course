@@ -1,11 +1,10 @@
 package ru.tinkoff.edu.java.scrapper.repository.jooq;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 import ru.tinkoff.edu.java.scrapper.DTO.model.Subscription;
-
-import java.util.List;
 
 @Repository
 @RequiredArgsConstructor

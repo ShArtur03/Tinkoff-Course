@@ -1,16 +1,12 @@
 package ru.tinkoff.edu.java.scrapper.repository.jdbc;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
-import ru.tinkoff.edu.java.scrapper.DTO.entities.SubscriptionEntity;
 import ru.tinkoff.edu.java.scrapper.DTO.model.Subscription;
 
-import java.util.List;
-
-@Repository
 @RequiredArgsConstructor
 public class JdbcSubscriptionRepository {
     private final JdbcTemplate template;
@@ -37,4 +33,3 @@ public class JdbcSubscriptionRepository {
         return template.queryForObject(COUNT_SUBSCRIPTIONS_QUERY, Integer.class, linkId);
     }
 }
-

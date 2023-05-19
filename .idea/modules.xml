@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Tinkoff-Course.iml" filepath="$PROJECT_DIR$/.idea/Tinkoff-Course.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project/bot/bot.iml" filepath="$PROJECT_DIR$/project/bot/bot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project/link-parser/link-parser.iml" filepath="$PROJECT_DIR$/project/link-parser/link-parser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project/project.iml" filepath="$PROJECT_DIR$/project/project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project/scrapper/scrapper.iml" filepath="$PROJECT_DIR$/project/scrapper/scrapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project/scrapper-jooq/scrapper-jooq.iml" filepath="$PROJECT_DIR$/project/scrapper-jooq/scrapper-jooq.iml" />
+    </modules>
+  </component>
+</project>

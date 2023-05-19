@@ -27,14 +27,4 @@ public class StackOverflowWebService {
         }
         return null;
     }
-
-    public List<StackOverflowApiResponse> fetchQuestions(List<Integer> ids) {
-        return stackOverflowWebClient
-                .fetchQuestions(ids
-                        .stream()
-                        .map(Object::toString)
-                        .collect(Collectors.joining(";")))
-                .map(StackOverflowApiItemsResponse::items)
-                .block();
-    }
 }
