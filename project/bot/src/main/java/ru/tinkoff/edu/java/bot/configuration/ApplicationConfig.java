@@ -19,6 +19,8 @@ public class ApplicationConfig {
     @NotNull
     private Bot bot;
     @NotNull
+    private Scrapper scrapper;
+    @NotNull
     private RabbitQueue rabbitQueue;
 
     @Validated
@@ -30,6 +32,12 @@ public class ApplicationConfig {
         private String token;
     }
 
+    @Validated
+    @Data
+    public static class Scrapper{
+        @NotBlank
+        private String url;
+    }
     @Validated
     @Data
     public static class RabbitQueue {
