@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tinkoff.edu.java.scrapper.DTO.entities.ChatEntity;
-import ru.tinkoff.edu.java.scrapper.service.domain.ChatService;
+import ru.tinkoff.edu.java.scrapper.service.domain.entitiesService.ChatService;
 import ru.tinkoff.edu.java.scrapper.repository.jpa.JpaChatRepository;
 import ru.tinkoff.edu.java.scrapper.repository.jpa.JpaLinkRepository;
 

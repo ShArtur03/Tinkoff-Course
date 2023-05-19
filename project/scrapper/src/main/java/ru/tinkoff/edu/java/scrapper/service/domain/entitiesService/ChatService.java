@@ -1,4 +1,4 @@
-package ru.tinkoff.edu.java.scrapper.service.domain;
+package ru.tinkoff.edu.java.scrapper.service.domain.entitiesService;
 
 
 public interface ChatService {

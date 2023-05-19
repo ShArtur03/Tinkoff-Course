@@ -12,7 +12,7 @@ import ru.tinkoff.edu.java.scrapper.DTO.model.Link;
 import ru.tinkoff.edu.java.scrapper.repository.jpa.JpaChatRepository;
 import ru.tinkoff.edu.java.scrapper.repository.jpa.JpaLinkRepository;
 import ru.tinkoff.edu.java.scrapper.repository.jpa.JpaSubscriptionRepository;
-import ru.tinkoff.edu.java.scrapper.service.domain.SubscriptionService;
+import ru.tinkoff.edu.java.scrapper.service.domain.entitiesService.SubscriptionService;
 
 import java.net.URI;
 import java.util.List;

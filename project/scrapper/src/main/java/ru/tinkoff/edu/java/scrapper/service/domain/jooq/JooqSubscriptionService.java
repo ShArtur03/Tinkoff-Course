@@ -9,7 +9,7 @@ import ru.tinkoff.edu.java.scrapper.DTO.model.Link;
 import ru.tinkoff.edu.java.scrapper.repository.jooq.JooqChatRepository;
 import ru.tinkoff.edu.java.scrapper.repository.jooq.JooqLinkRepository;
 import ru.tinkoff.edu.java.scrapper.repository.jooq.JooqSubscriptionRepository;
-import ru.tinkoff.edu.java.scrapper.service.domain.SubscriptionService;
+import ru.tinkoff.edu.java.scrapper.service.domain.entitiesService.SubscriptionService;
 
 import java.net.URI;
 import java.util.List;

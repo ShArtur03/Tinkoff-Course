@@ -9,7 +9,7 @@ import ru.tinkoff.edu.java.scrapper.DTO.controller.AddLinkRequest;
 import ru.tinkoff.edu.java.scrapper.DTO.controller.LinkResponse;
 import ru.tinkoff.edu.java.scrapper.DTO.controller.ListLinkResponse;
 import ru.tinkoff.edu.java.scrapper.DTO.controller.RemoveLinkRequest;
-import ru.tinkoff.edu.java.scrapper.service.domain.SubscriptionService;
+import ru.tinkoff.edu.java.scrapper.service.domain.entitiesService.SubscriptionService;
 
 import java.net.URI;
 import java.util.List;

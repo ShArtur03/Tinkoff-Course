@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.tinkoff.edu.java.scrapper.IntegrationEnvironment;
 import ru.tinkoff.edu.java.scrapper.DTO.model.Link;
 import ru.tinkoff.edu.java.scrapper.exception.InternalError;
-import ru.tinkoff.edu.java.scrapper.service.domain.LinkService;
+import ru.tinkoff.edu.java.scrapper.service.domain.entitiesService.LinkService;
 
 import java.time.Duration;
 import java.time.OffsetDateTime;

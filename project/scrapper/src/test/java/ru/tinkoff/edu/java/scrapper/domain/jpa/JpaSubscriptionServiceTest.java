@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.tinkoff.edu.java.scrapper.IntegrationEnvironment;
 import ru.tinkoff.edu.java.scrapper.DTO.model.Chat;
 import ru.tinkoff.edu.java.scrapper.DTO.model.Link;
-import ru.tinkoff.edu.java.scrapper.service.domain.SubscriptionService;
+import ru.tinkoff.edu.java.scrapper.service.domain.entitiesService.SubscriptionService;
 
 import java.net.URI;
 import java.util.List;

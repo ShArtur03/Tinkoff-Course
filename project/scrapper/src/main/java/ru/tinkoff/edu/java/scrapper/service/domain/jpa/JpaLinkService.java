@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 import ru.tinkoff.edu.java.scrapper.DTO.entities.LinkEntity;
 import ru.tinkoff.edu.java.scrapper.DTO.model.Link;
-import ru.tinkoff.edu.java.scrapper.service.domain.LinkService;
+import ru.tinkoff.edu.java.scrapper.service.domain.entitiesService.LinkService;
 import ru.tinkoff.edu.java.scrapper.repository.jpa.JpaLinkRepository;
 
 import java.time.Duration;
