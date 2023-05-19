@@ -1,4 +1,4 @@
-package ru.tinkoff.edu.java.scrapper.controllers;
+package ru.tinkoff.edu.java.scrapper.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,6 @@ import ru.tinkoff.edu.java.scrapper.service.domain.ChatService;
 @RestController
 @RequiredArgsConstructor
 public class TGChatController {
-
-    @Autowired
     private final ChatService chatService;
 
     @PostMapping(value = "/{id}")
