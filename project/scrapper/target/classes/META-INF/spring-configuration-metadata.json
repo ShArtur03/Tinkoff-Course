@@ -9,7 +9,7 @@
   "properties": [
     {
       "name": "app.scheduler",
-      "type": "ru.tinkoff.edu.java.scrapper.configuration.Scheduler",
+      "type": "ru.tinkoff.edu.java.scrapper.scheduler.Scheduler",
       "sourceType": "ru.tinkoff.edu.java.scrapper.configuration.ApplicationConfig"
     },
     {

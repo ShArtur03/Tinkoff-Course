@@ -2,12 +2,22 @@ app:
   test: config
   scheduler:
     interval: 10000
+  databaseAccessType: jpa
 
 springdoc:
   swagger-ui:
     path: /swagger-ui
   api-docs:
     path: /openapi/api-docs
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/scrapper
+    password: admin
+    username: admin
+  liquibase:
+    enabled: false
+
 
 web:
   url:
@@ -17,3 +27,4 @@ web:
 
 server:
   port: 5432
+

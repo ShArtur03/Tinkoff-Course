@@ -9,7 +9,5 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <include file="chatScheme.sql"/>
-    <include file="linkScheme.sql"/>
-    <include file="chatLinkScheme.sql"/>
+    <includeAll path="schemes"/>
 </databaseChangeLog>
