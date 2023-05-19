@@ -7,12 +7,12 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_DB=scrapper
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
     networks:
       - backend
     volumes:
-      - scrapper-postgres:/var/lib/postgesql/data
+      - ./scrapper-postgres:/var/lib/postgesql/data
 
   liquibase-migrations:
     image: liquibase/liquibase:4.18
@@ -23,8 +23,8 @@ services:
       - --changelog-file=master.xml
       - --driver=org.postgresql.Driver
       - --url=jdbc:postgresql://postgresql:5432/scrapper
-      - --username=admin
-      - --password=admin
+      - --username=postgres
+      - --password=password
       - update
     volumes:
       - ./migrations:/liquibase/changelog
@@ -47,6 +47,7 @@ services:
 
 volumes:
   rabbitmq:
+    driver: local
   scrapper-postgres:
 
 networks:
