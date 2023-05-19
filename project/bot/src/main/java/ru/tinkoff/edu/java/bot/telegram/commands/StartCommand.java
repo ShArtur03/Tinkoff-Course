@@ -1,31 +1,34 @@
 package ru.tinkoff.edu.java.bot.telegram.commands;
 
-import com.pengrad.telegrambot.model.Update;
-import com.pengrad.telegrambot.request.SendMessage;
+import jakarta.validation.constraints.NotNull;
+import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Order;
 import org.springframework.stereotype.Component;
-import ru.tinkoff.edu.java.bot.scrapper.Clients.TelegramClient;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
+import ru.tinkoff.edu.java.bot.exception.ChatAlreadyRegisteredException;
+import ru.tinkoff.edu.java.bot.service.ScrapperWebService;
 
+@Order(3)
 @Component
+@RequiredArgsConstructor
 public class StartCommand implements Command{
-    private final TelegramClient scrapperClient;
+    private final ScrapperWebService webService;
+    private static final String COMMAND = "/start";
+    private static final String welcomeMessage = "Hello!";
 
-    public StartCommand(TelegramClient scrapperClient) {
-        this.scrapperClient = scrapperClient;
+    @Override
+    public SendMessage handle(@NotNull Message message) {
+        try {
+            webService.createChat(message.getChatId());
+        }catch (ChatAlreadyRegisteredException ex) {
+            return new SendMessage(message.getChatId().toString(), "You have already started work");
+        }
+        return new SendMessage(message.getChatId().toString(), welcomeMessage);
     }
 
     @Override
-    public String command() {
-        return "/start";
-    }
-
-    @Override
-    public String description() {
-        return "Старт бота";
-    }
-
-    @Override
-    public SendMessage handle(Update update) {
-        scrapperClient.register(update.message().chat().id());
-        return new SendMessage(update.message().chat().id(), "Введите команду /help");
+    public boolean supports(@NotNull Message message) {
+        return message.getText().trim().startsWith(COMMAND);
     }
 }

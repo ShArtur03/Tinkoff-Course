@@ -1,31 +1,39 @@
 package ru.tinkoff.edu.java.bot.telegram.commands;
 
-import com.pengrad.telegrambot.model.Update;
-import com.pengrad.telegrambot.request.SendMessage;
+import jakarta.validation.constraints.NotNull;
+import org.apache.logging.log4j.util.Strings;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
 
+import java.util.List;
+
+@Order(1)
 @Component
-public class HelpCommand implements Command{
+public class HelpCommand extends AbstractCommand{
 
+    private static final String COMMAND = "/help";
+    private static final String DESCRIPTION = "Show the list of commands";
+    private final List<String> commandsDescription;
+
+    public HelpCommand(@Lazy List<AbstractCommand> commands) {
+        super(COMMAND, DESCRIPTION);
+        commandsDescription = commands.stream()
+                .map(c -> c.getCommand() + ": " + c.getDescription())
+                .toList();
+    }
     @Override
-    public String command() {
-        return "/help";
+    public SendMessage handle(@NotNull Message message) {
+        return new SendMessage(
+                message.getChatId().toString(),
+                "Description of commands: \n" + Strings.join(commandsDescription, '\n'));
     }
 
     @Override
-    public String description() {
-        return "Получить список доступных комманд";
-    }
-
-    @Override
-    public SendMessage handle(Update update) {
-        return new SendMessage(update.message().chat().id(),
-                "Список доступных команд: \n" +
-                        "/start - регистрация пользователя.\n\n" +
-                        "/help - Список доступных команд.\n\n" +
-                        "/track - Начать отслеживание ссылки.\n\n" +
-                        "/untrack - Перестать отслеживать ссылку.\n\n" +
-                        "/list - Список отслеживаемых ссылок.");
+    public boolean supports(@NotNull Message message) {
+        return message.getText().trim().startsWith(COMMAND);
     }
 
 }

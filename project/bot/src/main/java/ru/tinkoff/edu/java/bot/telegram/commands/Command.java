@@ -1,21 +1,13 @@
 package ru.tinkoff.edu.java.bot.telegram.commands;
 
-import com.pengrad.telegrambot.model.BotCommand;
-import com.pengrad.telegrambot.model.Update;
-import com.pengrad.telegrambot.request.SendMessage;
+import jakarta.validation.constraints.NotNull;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
 
 public interface Command {
-    String command();
+    SendMessage handle(@NotNull Message message);
 
-    String description();
-
-    SendMessage handle(Update update);
-
-    default boolean supports(Update update) {
+    default boolean supports(@NotNull Message message) {
         return false;
-    }
-
-    default BotCommand toApiCommand() {
-        return new BotCommand(command(), description());
     }
 }

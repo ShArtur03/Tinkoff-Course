@@ -1,41 +1,48 @@
 package ru.tinkoff.edu.java.bot.telegram.commands;
 
-import com.pengrad.telegrambot.model.Update;
-import com.pengrad.telegrambot.request.SendMessage;
+
+import jakarta.validation.constraints.NotNull;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import ru.tinkoff.edu.java.bot.scrapper.Clients.LinksClient;
-import ru.tinkoff.edu.java.bot.scrapper.DTO.ListLinksResponse;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
+import ru.tinkoff.edu.java.bot.DTO.scrapper.LinkResponse;
+import ru.tinkoff.edu.java.bot.DTO.scrapper.ListLinksResponse;
+import ru.tinkoff.edu.java.bot.service.ScrapperWebService;
 
+import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Order(2)
 @Component
-public class ListCommand implements Command{
-    private final LinksClient scrapperClient;
+public class ListCommand extends AbstractCommand{
+    private final ScrapperWebService webService;
 
-    public ListCommand(LinksClient scrapperClient) {
-        this.scrapperClient = scrapperClient;
+    private static final String COMMAND = "/list";
+    private static final String DESCRIPTION = "Show tracking links";
+    private static final String emptyListMessage =
+            "You don't have tracked links yet, use /track <link> to track one";
+
+
+    public ListCommand(ScrapperWebService webService) {
+        super(COMMAND, DESCRIPTION);
+        this.webService = webService;
+    }
+    @Override
+    public SendMessage handle(@NotNull Message message) {
+        ListLinksResponse response = webService.getAllLinks(message.getChatId());
+        String text = response.size() == 0 ? emptyListMessage : getTrackedList(response);
+        return new SendMessage(message.getChatId().toString(), text);
     }
 
-
     @Override
-    public String command() {
-        return "/list";
+    public boolean supports(@NotNull Message message) {
+        return message.getText().trim().startsWith(COMMAND);
     }
 
-    @Override
-    public String description() {
-        return "Получить список отслеживаемых ссылок";
-    }
-
-
-
-    @Override
-    public SendMessage handle(Update update) {
-        ListLinksResponse listLinkResponse = scrapperClient.getAllLinks(update.message().chat().id());
-        if (listLinkResponse == null || listLinkResponse.size() == 0) return new SendMessage(update.message().chat().id(), "Нет отслеживаемых ссылок");
-        var answer = new StringBuilder();
-        answer.append("Список отслеживаемых ссылок:\n");
-        for (int i = 0; i < listLinkResponse.size(); i++) {
-            answer.append(listLinkResponse.links().get(i).getUrl()).append("\n");
-        }
-        return new SendMessage(update.message().chat().id(), answer.toString());
+    private String getTrackedList(ListLinksResponse response) {
+        List<String> links = response.links().stream().map(LinkResponse::link).map(URI::toString).toList();
+        return "List of your current tracked links: \n" + links.stream().map(link -> "- " + link).collect(Collectors.joining("\n"));
     }
 }
