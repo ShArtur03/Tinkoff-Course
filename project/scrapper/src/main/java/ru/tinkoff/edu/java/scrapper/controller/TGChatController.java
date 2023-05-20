@@ -12,12 +12,10 @@ import ru.tinkoff.edu.java.scrapper.service.domain.entitiesService.ChatService;
 public class TGChatController {
     private final ChatService chatService;
 
-    @PostMapping(value = "/{id}")
-    public void create(@PathVariable("id") Long id) {
-        chatService.register(id);
-    }
+    @PostMapping(path = "/{id}")
+    public void create(@PathVariable("id") Long id) {chatService.register(id);}
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(path = "/{id}")
     public void delete(@PathVariable("id") Long id) {
         chatService.unregister(id);
     }
