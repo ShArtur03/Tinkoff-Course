@@ -28,6 +28,8 @@ public class ApplicationConfig {
     @NotNull
     private Bot bot;
     @NotNull
+    private AccessType databaseAccessType;
+    @NotNull
     private RabbitQueue rabbitQueue;
     private Boolean useQueue = false;
 
@@ -70,5 +72,9 @@ public class ApplicationConfig {
         private String queueName;
         @NotBlank
         private String routingKey;
+    }
+
+    public enum AccessType{
+        JPA, JDBC, JOOQ
     }
 }
